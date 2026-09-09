@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREHISTORIC — Jejak Bumi Purba</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #080b09;
+      --bg-soft: #101511;
+      --card: rgba(22, 29, 23, 0.82);
+      --green: #9caf72;
+      --green-light: #c5d894;
+      --orange: #c77942;
+      --yellow: #e0ad64;
+      --text: #eee9db;
+      --muted: #9c9b91;
+      --border: rgba(197, 216, 148, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(117, 145, 76, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(193, 104, 52, 0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8, 11, 9, 0.72);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo {
+      font-family: "Cinzel", serif;
+      font-size: 20px;
+      letter-spacing: 4px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--green-light);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: var(--green-light);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 7% 80px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -200px;
+      top: 100px;
+      background: radial-gradient(circle, rgba(126, 153, 82, .18), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-light);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: var(--green-light);
+    }
+
+    h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(55px, 8vw, 110px);
+      line-height: .88;
+      letter-spacing: -3px;
+      margin-bottom: 28px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero-description {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      padding: 14px 23px;
+      border-radius: 4px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      transition: .3s;
+      cursor: pointer;
+      background: rgba(255,255,255,.03);
+    }
+
+    .btn.primary {
+      background: var(--green);
+      color: #10140e;
+      border-color: var(--green);
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+    }
+
+    .hero-art {
+      height: 530px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .planet {
+      width: min(430px, 75vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at 32% 28%, #d4c99a 0 3%, transparent 4%),
+        radial-gradient(circle at 60% 40%, #7f915e 0 13%, transparent 14%),
+        radial-gradient(circle at 35% 65%, #6f7d4d 0 18%, transparent 19%),
+        radial-gradient(circle at 70% 75%, #b57949 0 8%, transparent 9%),
+        radial-gradient(circle at 50% 50%, #30402b 0%, #1c281c 60%, #0b100c 100%);
+      box-shadow:
+        0 0 80px rgba(139, 163, 94, .2),
+        inset -40px -25px 70px rgba(0,0,0,.7),
+        inset 25px 10px 50px rgba(210, 188, 119,.12);
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    .planet::before {
+      content: "";
+      position: absolute;
+      inset: -18px;
+      border-radius: 50%;
+      border: 1px solid rgba(199, 208, 153, .14);
+    }
+
+    .planet::after {
+      content: "";
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      background: repeating-linear-gradient(
+        140deg,
+        transparent 0px,
+        transparent 25px,
+        rgba(255,255,255,.018) 26px,
+        transparent 27px
+      );
+      mix-blend-mode: screen;
+    }
+
+    .dino {
+      position: absolute;
+      right: 5%;
+      bottom: 8%;
+      font-size: 100px;
+      filter: grayscale(1);
+      opacity: .25;
+      transform: scaleX(-1);
+    }
+
+    @keyframes floating {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+    }
+
+    /* ================= SECTION ================= */
+
+    section {
+      padding: 110px 7%;
+      position: relative;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 55px;
+    }
+
+    .section-heading h2 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(35px, 5vw, 60px);
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ================= STATS ================= */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .stat {
+      background: var(--bg-soft);
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Cinzel", serif;
+      font-size: 34px;
+      color: var(--green-light);
+      margin-bottom: 7px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ================= TIMELINE ================= */
+
+    .timeline-wrapper {
+      position: relative;
+      overflow-x: auto;
+      padding: 40px 0 55px;
+      scrollbar-color: var(--green) transparent;
+    }
+
+    .timeline {
+      min-width: 1100px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--green), var(--yellow));
+      opacity: .4;
+    }
+
+    .era {
+      width: 200px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .era-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--green-light);
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--green);
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .era:hover .era-dot,
+    .era.active .era-dot {
+      background: var(--orange);
+      box-shadow: 0 0 20px rgba(199,121,66,.7);
+    }
+
+    .era small {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .era h3 {
+      font-family: "Cinzel", serif;
+      font-size: 18px;
+      margin: 7px 0;
+    }
+
+    .era p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ================= ERA DETAIL ================= */
+
+    .era-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      margin-top: 40px;
+    }
+
+    .detail-card {
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(35,45,35,.75), rgba(10,14,11,.8));
+      padding: 40px;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-card::after {
+      content: attr(data-number);
+      position: absolute;
+      right: -20px;
+      bottom: -50px;
+      font-family: "Cinzel", serif;
+      font-size: 180px;
+      color: rgba(255,255,255,.025);
+    }
+
+    .detail-card h3 {
+      font-family: "Cinzel", serif;
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .detail-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    .fact-list {
+      list-style: none;
+      margin-top: 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .fact-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      color: #c4c4b8;
+      font-size: 13px;
+    }
+
+    .fact-list li::before {
+      content: "◆";
+      color: var(--green);
+      margin-right: 10px;
+      font-size: 8px;
+    }
+
+    /* ================= CREATURES ================= */
+
+    .creatures {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .creature {
+      min-height: 390px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      background: #111610;
+      transition: .4s;
+    }
+
+    .creature:hover {
+      transform: translateY(-8px);
+      border-color: rgba(197,216,148,.35);
+    }
+
+    .creature-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(135,153,83,.2), transparent 30%),
+        linear-gradient(145deg, transparent, rgba(0,0,0,.7));
+    }
+
+    .creature-icon {
+      font-size: 95px;
+      position: relative;
+      z-index: 2;
+      margin: 20px 0 50px;
+      filter: grayscale(.3);
+    }
+
+    .creature h3 {
+      font-family: "Cinzel", serif;
+      font-size: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .creature p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: 1px solid var(--border);
+      padding: 6px 9px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--green-light);
+      z-index: 3;
+    }
+
+    /* ================= EXTINCTION ================= */
+
+    .extinction {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(7,10,8,.98), rgba(7,10,8,.55)),
+        radial-gradient(circle at 80% 50%, #5e2918, transparent 35%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .asteroid {
+      position: absolute;
+      right: 7%;
+      top: 25%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 25%, #c39a73, #604a37 55%, #171510 100%);
+      border-radius: 48% 52% 43% 57%;
+      box-shadow: 0 0 60px rgba(213,104,43,.3);
+      animation: asteroidMove 8s infinite linear;
+    }
+
+    @keyframes asteroidMove {
+      0% { transform: translate(150px,-100px) rotate(0deg); }
+      45% { transform: translate(0,0) rotate(150deg); }
+      55% { transform: translate(-40px,30px) rotate(190deg); }
+      100% { transform: translate(-200px,120px) rotate(360deg); }
+    }
+
+    .extinction-content {
+      max-width: 650px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .extinction-content h2 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(40px, 6vw, 70px);
+      margin-bottom: 20px;
+    }
+
+    .extinction-content p {
+      color: #aaa99f;
+      line-height: 1.8;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 50px 7%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      color: #696b64;
+      font-size: 12px;
+    }
+
+    /* ================= REVEAL ================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+      }
+
+      .hero-art {
+        height: 400px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .era-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .creatures {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      section {
+        padding: 80px 5%;
+      }
+
+      .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        padding: 25px 10px;
+      }
+
+      .stat strong {
+        font-size: 25px;
+      }
+
+      .detail-card {
+        padding: 25px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">PRE<span>HISTORIC</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#creatures">Creatures</a>
+      <a href="#extinction">Extinction</a>
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <main id="home">
+
+    <section class="hero">
+      <div class="hero-content reveal">
+        <div class="eyebrow">A Journey Through Deep Time</div>
+
+        <h1>
+          BUMI<br>
+          <span>PURBA.</span>
+        </h1>
+
+        <p class="hero-description">
+          Sebelum manusia berjalan di atasnya, Bumi adalah dunia yang
+          sangat berbeda. Lautan purba, benua yang terus bergerak,
+          hutan raksasa, dan makhluk-makhluk luar biasa membentuk
+          sejarah planet kita selama miliaran tahun.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#timeline" class="btn primary">Jelajahi Timeline</a>
+          <a href="#creatures" class="btn">Temukan Makhluk Purba</a>
+        </div>
+      </div>
+
+      <div class="hero-art reveal">
+        <div class="planet"></div>
+        <div class="dino">🦖</div>
+      </div>
+    </section>
+
+
+    <!-- STATS -->
+    <section>
+      <div class="stats reveal">
+
+        <div class="stat">
+          <strong>4.6B</strong>
+          <span>Tahun Usia Bumi</span>
+        </div>
+
+        <div class="stat">
+          <strong>541M</strong>
+          <span>Awal Paleozoikum</span>
+        </div>
+
+        <div class="stat">
+          <strong>252M</strong>
+          <span>Awal Mesozoikum</span>
+        </div>
+
+        <div class="stat">
+          <strong>66M</strong>
+          <span>Tahun Lalu</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TIMELINE -->
+    <section id="timeline">
+
+      <div class="section-heading reveal">
+        <div class="eyebrow">Deep Time</div>
+        <h2>Timeline Bumi</h2>
+        <p>
+          Klik setiap era untuk melihat perubahan besar yang terjadi
+          pada planet kita.
+        </p>
+      </div>
+
+      <div class="timeline-wrapper reveal">
+
+        <div class="timeline">
+
+          <div class="era active" data-era="hadean">
+            <div class="era-dot"></div>
+            <small>4.6–4.0 Miliar</small>
+            <h3>Hadean</h3>
+            <p>Bumi terbentuk dari material tata surya muda.</p>
+          </div>
+
+          <div class="era" data-era="archean">
+            <div class="era-dot"></div>
+            <small>4.0–2.5 Miliar</small>
+            <h3>Arkean</h3>
+            <p>Kehidupan mikroskopis mulai berkembang.</p>
+          </div>
+
+          <div class="era" data-era="paleozoic">
+            <div class="era-dot"></div>
+            <small>541–252 Juta</small>
+            <h3>Paleozoikum</h3>
+            <p>Ledakan kehidupan laut dan munculnya hewan darat.</p>
+          </div>
+
+          <div class="era" data-era="mesozoic">
+            <div class="era-dot"></div>
+            <small>252–66 Juta</small>
+            <h3>Mesozoikum</h3>
+            <p>Zaman kejayaan dinosaurus.</p>
+          </div>
+
+          <div class="era" data-era="cenozoic">
+            <div class="era-dot"></div>
+            <small>66 Juta–Kini</small>
+            <h3>Kenozoikum</h3>
+            <p>Mamalia berkembang dan manusia akhirnya muncul.</p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- DETAIL TIMELINE -->
+      <div class="era-detail reveal">
+
+        <div class="detail-card" data-number="01">
+          <div class="eyebrow">Era Terpilih</div>
+          <h3 id="eraTitle">Hadean</h3>
+          <p id="eraDescription">
+            Hadean merupakan periode paling awal dalam sejarah Bumi.
+            Planet masih sangat panas dan permukaannya mengalami
+            aktivitas vulkanik yang ekstrem.
+          </p>
+        </div>
+
+        <div class="detail-card" data-number="02">
+          <div class="eyebrow">Fakta Penting</div>
+          <ul class="fact-list" id="factList">
+            <li>Bumi terbentuk sekitar 4,6 miliar tahun lalu.</li>
+            <li>Permukaan awal Bumi sangat panas.</li>
+            <li>Atmosfer awal berbeda jauh dari sekarang.</li>
+            <li>Samudra mulai terbentuk setelah planet mendingin.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CREATURES -->
+    <section id="creatures">
+
+      <div class="section-heading reveal">
+        <div class="eyebrow">Ancient Life</div>
+        <h2>Penghuni Dunia Purba</h2>
+        <p>
+          Jauh sebelum peradaban manusia, berbagai bentuk kehidupan
+          mendominasi daratan dan lautan Bumi.
+        </p>
+      </div>
+
+      <div class="creatures">
+
+        <article class="creature reveal">
+          <div class="creature-bg"></div>
+          <div class="badge">MESOZOIKUM</div>
+          <div class="creature-icon">🦖</div>
+          <h3>Tyrannosaurus</h3>
+          <p>
+            Predator besar dari akhir periode Kapur yang hidup
+            sekitar 68–66 juta tahun lalu.
+          </p>
+        </article>
+
+        <article class="creature reveal">
+          <div class="creature-bg"></div>
+          <div class="badge">PALEOZOIKUM</div>
+          <div class="creature-icon">🦂</div>
+          <h3>Arthropoda Purba</h3>
+          <p>
+            Berbagai arthropoda raksasa pernah hidup ketika kadar
+            oksigen dan ekosistem memungkinkan tubuh berukuran besar.
+          </p>
+        </article>
+
+        <article class="creature reveal">
+          <div class="creature-bg"></div>
+          <div class="badge">LAUT PURBA</div>
+          <div class="creature-icon">🐙</div>
+          <h3>Cephalopoda</h3>
+          <p>
+            Kerabat kuno cephalopoda menjadi salah satu kelompok
+            penting dalam ekosistem laut selama ratusan juta tahun.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- EXTINCTION -->
+    <section id="extinction" class="extinction">
+
+      <div class="asteroid"></div>
+
+      <div class="extinction-content reveal">
+        <div class="eyebrow">66 Million Years Ago</div>
+
+        <h2>AKHIR SEBUAH ERA.</h2>
+
+        <p>
+          Sekitar 66 juta tahun lalu, sebuah asteroid besar menghantam
+          wilayah yang sekarang dikenal sebagai Semenanjung Yucatán.
+          Peristiwa tersebut berkaitan dengan perubahan lingkungan
+          global yang menyebabkan kepunahan massal, termasuk hilangnya
+          dinosaurus non-unggas.
+        </p>
+
+        <br>
+
+        <p>
+          Namun kehidupan terus berlanjut. Dari dunia yang berubah itu,
+          mamalia kemudian berkembang dan akhirnya membawa kita menuju
+          dunia modern.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 PREHISTORIC EARTH</span>
+    <span>EXPLORE • DISCOVER • REMEMBER</span>
+  </footer>
+
+
+  <script>
+    /* ================= TIMELINE DATA ================= */
+
+    const eraData = {
+
+      hadean: {
+        title: "Hadean",
+        description:
+          "Hadean merupakan periode paling awal dalam sejarah Bumi. Planet masih sangat panas, mengalami aktivitas vulkanik ekstrem, dan sering dihantam benda langit.",
+        facts: [
+          "Bumi terbentuk sekitar 4,6 miliar tahun lalu.",
+          "Permukaan awal Bumi sangat panas.",
+          "Atmosfer awal sangat berbeda dari sekarang.",
+          "Samudra mulai terbentuk ketika permukaan mendingin."
+        ]
+      },
+
+      archean: {
+        title: "Arkean",
+        description:
+          "Pada Arkean, Bumi mulai menjadi tempat yang lebih stabil bagi kehidupan. Organisme mikroskopis sederhana berkembang di lingkungan laut.",
+        facts: [
+          "Kehidupan awal berupa organisme sederhana.",
+          "Banyak kehidupan berada di lingkungan laut.",
+          "Stromatolit menjadi salah satu bukti kehidupan awal.",
+          "Atmosfer masih memiliki sangat sedikit oksigen bebas."
+        ]
+      },
+
+      paleozoic: {
+        title: "Paleozoikum",
+        description:
+          "Paleozoikum menyaksikan perubahan besar dalam kehidupan. Kehidupan laut berkembang pesat dan tumbuhan serta hewan mulai menguasai daratan.",
+        facts: [
+          "Terjadi ledakan kehidupan Kambrium.",
+          "Ikan berkembang dan menjadi semakin beragam.",
+          "Tumbuhan mulai menyebar di daratan.",
+          "Hewan mulai beradaptasi dengan kehidupan darat."
+        ]
+      },
+
+      mesozoic: {
+        title: "Mesozoikum",
+        description:
+          "Mesozoikum sering disebut sebagai zaman dinosaurus. Reptil besar mendominasi berbagai ekosistem darat, laut, dan udara.",
+        facts: [
+          "Dinosaurus menjadi kelompok dominan di daratan.",
+          "Pangea mulai terpecah menjadi benua-benua.",
+          "Burung pertama muncul dari garis keturunan dinosaurus.",
+          "Era ini berakhir dengan kepunahan massal sekitar 66 juta tahun lalu."
+        ]
+      },
+
+      cenozoic: {
+        title: "Kenozoikum",
+        description:
+          "Setelah kepunahan besar, mamalia mengalami diversifikasi yang luar biasa. Perubahan iklim dan lingkungan membentuk dunia yang semakin mirip dengan Bumi modern.",
+        facts: [
+          "Mamalia berkembang menjadi berbagai bentuk.",
+          "Burung mengalami diversifikasi.",
+          "Padang rumput menyebar luas.",
+          "Manusia muncul sangat jauh di akhir sejarah Bumi."
+        ]
+      }
+
+    };
+
+
+    /* ================= TIMELINE INTERACTION ================= */
+
+    const eras = document.querySelectorAll(".era");
+    const title = document.getElementById("eraTitle");
+    const description = document.getElementById("eraDescription");
+    const factList = document.getElementById("factList");
+
+    eras.forEach(era => {
+
+      era.addEventListener("click", () => {
+
+        eras.forEach(item => item.classList.remove("active"));
+        era.classList.add("active");
+
+        const selectedEra = eraData[era.dataset.era];
+
+        title.textContent = selectedEra.title;
+        description.textContent = selectedEra.description;
+
+        factList.innerHTML = "";
+
+        selectedEra.facts.forEach(fact => {
+          const li = document.createElement("li");
+          li.textContent = fact;
+          factList.appendChild(li);
+        });
+
+      });
+
+    });
+
+
+    /* ================= SCROLL REVEAL ================= */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* ================= PARALLAX PLANET ================= */
+
+    const planet = document.querySelector(".planet");
+
+    window.addEventListener("mousemove", e => {
+
+      const x = (window.innerWidth / 2 - e.clientX) / 45;
+      const y = (window.innerHeight / 2 - e.clientY) / 45;
+
+      planet.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+    });
+
+
+    /* ================= HEADER EFFECT ================= */
+
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+        header.style.background = "rgba(8, 11, 9, .92)";
+      } else {
+        header.style.background = "rgba(8, 11, 9, .72)";
+      }
+
+    });
+  </script>
+
+</body>
+</html>
